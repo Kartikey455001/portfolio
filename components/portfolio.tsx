@@ -424,12 +424,12 @@ function About({ onResumePreview }: { onResumePreview: () => void }) {
   );
 }
 
-const skillFilters: Array<"All" | SkillGroup> = ["All", "Languages", "Web Dev", "AI & Tools", "Core CS"];
+const skillFilters: SkillGroup[] = ["Languages", "Web Dev", "AI & Tools", "Core CS"];
 
 function Skills() {
-  const [filter, setFilter] = useState<(typeof skillFilters)[number]>("All");
+  const [filter, setFilter] = useState<SkillGroup>("Languages");
   const visibleSkills = useMemo(
-    () => (filter === "All" ? skills : skills.filter((skill) => skill.group === filter)),
+    () => skills.filter((skill) => skill.group === filter),
     [filter]
   ); 
 
@@ -693,23 +693,25 @@ function LeetCode({ stats }: { stats: LeetCodeStats }) {
               <span>Submission Activity</span>
               <span className="activity-year">{stats.activeDays || 147} Active Days</span>
             </div>
-            <div className="activity-months">
-              {monthLabels.map((month, index) => <span key={`${month}-${index}`}>{month}</span>)}
-            </div>
-            <div className="heatmap-grid">
-              {stats.activity.slice(0, weekCount * 7).map(({ date, count }) => (
-                <i
-                  key={date}
-                  className={`heat-cell level-${activityLevel(count)}`}
-                  title={`${count} ${count === 1 ? "submission" : "submissions"} on ${date}`}
-                  aria-label={`${count} ${count === 1 ? "submission" : "submissions"} on ${date}`}
-                />
-              ))}
-            </div>
-            <div className="activity-days">
-              <span>Mon</span>
-              <span>Wed</span>
-              <span>Fri</span>
+            <div className="heatmap-scroll-area">
+              <div className="activity-months">
+                {monthLabels.map((month, index) => <span key={`${month}-${index}`}>{month}</span>)}
+              </div>
+              <div className="heatmap-grid">
+                {stats.activity.slice(0, weekCount * 7).map(({ date, count }) => (
+                  <i
+                    key={date}
+                    className={`heat-cell level-${activityLevel(count)}`}
+                    title={`${count} ${count === 1 ? "submission" : "submissions"} on ${date}`}
+                    aria-label={`${count} ${count === 1 ? "submission" : "submissions"} on ${date}`}
+                  />
+                ))}
+              </div>
+              <div className="activity-days">
+                <span>Mon</span>
+                <span>Wed</span>
+                <span>Fri</span>
+              </div>
             </div>
           </div>
 
