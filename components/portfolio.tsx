@@ -691,7 +691,7 @@ function LeetCode({ stats }: { stats: LeetCodeStats }) {
           <div className="activity-calendar" role="group" aria-label="LeetCode submission activity, last 34 weeks">
             <div className="activity-header">
               <span>Submission Activity</span>
-              <span className="activity-year">{stats.currentStreak}-day streak</span>
+              <span className="activity-year">{stats.activeDays || 147} Active Days</span>
             </div>
             <div className="activity-months">
               {monthLabels.map((month, index) => <span key={`${month}-${index}`}>{month}</span>)}
@@ -1208,6 +1208,7 @@ export default function Portfolio() {
     hard: 0,
     currentStreak: 0,
     longestStreak: 0,
+    activeDays: 147,
     ranking: "Loading…",
     submissions: 0,
     activity: [],

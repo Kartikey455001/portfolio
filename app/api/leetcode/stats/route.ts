@@ -74,7 +74,7 @@ export async function GET() {
 
     return NextResponse.json({
       total: count(accepted, "All"), easy: count(accepted, "Easy"), medium: count(accepted, "Medium"), hard: count(accepted, "Hard"),
-      currentStreak, longestStreak, ranking: user.profile?.ranking ? `#${Number(user.profile.ranking).toLocaleString()} Global` : "Unranked",
+      currentStreak, longestStreak, activeDays: active.size, ranking: user.profile?.ranking ? `#${Number(user.profile.ranking).toLocaleString()} Global` : "Unranked",
       submissions: count(submissions, "All"), activity,
     }, { headers: { "Cache-Control": "public, s-maxage=900, stale-while-revalidate=3600" } });
   } catch {

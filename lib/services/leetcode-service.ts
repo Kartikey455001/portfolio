@@ -5,6 +5,7 @@ export type LeetCodeStats = {
   hard: number;
   currentStreak: number;
   longestStreak: number;
+  activeDays?: number;
   ranking: string;
   submissions: number;
   activity: { date: string; count: number }[];
