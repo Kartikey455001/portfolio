@@ -38,7 +38,3 @@ next-env.d.ts
 /work/
 /tmp/
 *.tsbuildinfo
-/backend/node_modules/
-/backend/dist/
-/backend/src/generated/
-/backend/coverage/
