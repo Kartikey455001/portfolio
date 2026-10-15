@@ -431,7 +431,7 @@ function Skills() {
   const visibleSkills = useMemo(
     () => (filter === "All" ? skills : skills.filter((skill) => skill.group === filter)),
     [filter]
-  );
+  ); 
 
   return (
     <section className="section skills-section" id="skills">
